@@ -1,0 +1,10 @@
+<div class="article">
+  <app-short-post *ngFor="let post of posts; let i = index" 
+    [ngStyle]="((i + 1) % 2) ? {'float':'left'} : {'float':'right'}" 
+    [title]="post?.title" 
+    [description]="post.description"
+    [id]="post.id"
+    [account]="post.account"
+    >
+  </app-short-post>
+</div>

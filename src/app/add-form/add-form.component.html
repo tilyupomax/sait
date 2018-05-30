@@ -1,0 +1,47 @@
+<div class="form">
+  <h1>Создание статьи</h1>
+  <form (ngSubmit)="submit(form)" #form="ngForm">
+    <div>
+      <mat-form-field>
+        <mat-label>Название</mat-label>
+        <input 
+          type="text" placeholder="Что такое утка в СМИ"
+          matInput [(ngModel)]="post.title" name="title" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field hintLabel="Максимально 250 символов">
+        <mat-label>Описание</mat-label>
+        <input 
+          type="text" maxlength="250" placeholder="Это ложная новость, цель которой ..." 
+          matInput [(ngModel)]="post.description" name="description" required>   
+          <mat-hint align="end">{{post != null ? post.description.length : 0}}/250</mat-hint>   
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Контент</mat-label>
+        <textarea 
+          placeholder="Сегодня мы разберем еще один термин из СМИ - утка ..." 
+          matInput [(ngModel)]="content" name="article" required>
+        </textarea> 
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Область видимости</mat-label>
+        <mat-select placeholder="Админ" name="account" [(ngModel)]="post.account" required>
+          <mat-option *ngFor="let account of accounts" [value]="account.position">
+            {{account.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button [disabled]="!form.valid">
+        Отправить
+      </button>
+    </div>
+    
+  </form>
+</div>

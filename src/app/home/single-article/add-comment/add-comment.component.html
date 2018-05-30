@@ -1,0 +1,25 @@
+<div class="comment-form-add">
+  <h1>Оставить комментарий</h1>
+  <form (ngSubmit)="addComment(form)" #form="ngForm">
+    <div>
+      <mat-form-field>
+        <mat-label>Имя</mat-label>
+        <input type="text" placeholder="Андрей ..." name="name" [(ngModel)]="_comment.userName" matInput required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field hintLabel="Максимально 150 символов">
+        <mat-label>Комментарий</mat-label>
+        <textarea 
+          type="text" placeholder="Все супер! ..." 
+          maxlength="150" [(ngModel)]="_comment.comment" 
+          name="comment" matInput required>
+        </textarea>
+        <mat-hint align="end">{{_comment.comment.length}}/150</mat-hint>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-button [disabled]="!form.valid">Отправить</button>
+    </div>
+  </form>
+</div>

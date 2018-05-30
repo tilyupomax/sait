@@ -1,0 +1,15 @@
+<div class="article">
+  <div>
+    <h1>{{article.title}}</h1>
+  </div>
+  <div>
+    <p>{{article.content}}</p>
+  </div>
+  
+</div>
+<div>
+  <app-add-comment (comment)="GetComment($event)" [id]='id'></app-add-comment>
+  <app-comment *ngFor="let comment of article.comments; let i = index" [id]="i + 1"
+    [userName]="comment.userName" [userComment]="comment.comment">
+  </app-comment>
+</div>
