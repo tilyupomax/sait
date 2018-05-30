@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Account } from '../models/account';
+import { of } from 'rxjs';
 
 const _Accounts: Account[] = [
   {name: 'Админ', position: 'admin', color: '#F4D03F'},
@@ -16,11 +17,11 @@ export class AccountsService {
   constructor() { }
 
   GetAccounts() {
-    return _Accounts;
+    return of(_Accounts);
   }
 
   GetUsedAccount() {
-    return this.usedAccount;
+    return of(this.usedAccount);
   }
 
   toggleAccount(account: string) {
