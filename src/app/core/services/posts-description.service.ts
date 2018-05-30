@@ -3,7 +3,6 @@ import { ShortPost } from '../models/short-post';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
 import { Article } from '../models/article';
 import { SingleComment } from '../models/single-comment';
-import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,16 +28,16 @@ export class PostsDescriptionService {
     this.current_id++;
   }
 
-  GetPosts() {  // отправка кратких версий постов
-    return of(this.posts);
+  GetPosts(): ShortPost[] {  // отправка кратких версий постов
+    return this.posts;
   }
 
   GetArticleById(id: number) {
-    return of(localStorage.getItem('' + id));
+    return localStorage.getItem('' + id);
   }
 
   GetPostById (id: number) {
-    return of(this.posts[id - 1]);
+    return this.posts[id - 1];
   }
 
   AddComment(idPost: number, _article: Article) {
@@ -48,6 +47,6 @@ export class PostsDescriptionService {
   GetPostsByPosition(position: string) {
     const exposts: ShortPost[] = this.posts.filter(x => x.account === position).map(x => x);
 
-    return of(exposts);
+    return exposts;
   }
 }

@@ -13,7 +13,8 @@ const routes: Routes = [
   {
     path: 'add', loadChildren: './add-form/add-form.module#AddFormModule'
   },
-  { path: 'login', loadChildren: './login/login.module#LoginModule' }
+  { path: 'login', loadChildren: './login/login.module#LoginModule' },
+  { path: '**', component: NotFoundComponent}
 ];
 
 export const AppRoutes = RouterModule.forRoot(routes);
